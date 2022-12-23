@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-//import { nanoid } from 'nanoid'
-
-
+//import { nanoid } from 'nanoid';
+import clsx from 'clsx';
+import css from './ContactForm.module.css'
 export class ContactForm extends Component {
     
 state = {
@@ -36,7 +36,7 @@ handleSubmit = (event) => {
                        required
                      />
                   </div>
-                     <button className="btn btn-primary" type="submit">Add contact</button>
+            <button className={clsx(css.submitButton)} type="submit">Add contact</button>
                 </form>)
               }
             };
