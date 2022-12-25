@@ -7,14 +7,14 @@ import css from './ContactList.module.css';
 
 export const ContactList = ({ contacts, onClick }) => {
   return (
-    <div className={clsx}>
+    <div >
       {contacts.map(contact => {
         return (
-          <div  key={nanoid()}>
+          <div className={clsx(css.ContactListThumb)}  key={nanoid()}>
             <p>
               {contact.name}: {contact.number}
             </p>
-            <button
+            <button className={clsx(css.button)}
               type="button"
               onClick={() => {
                 onClick(contact.id);
