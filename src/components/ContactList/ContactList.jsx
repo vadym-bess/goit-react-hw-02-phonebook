@@ -2,13 +2,15 @@ import React from 'react';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 import clsx from 'clsx'
+import css from './ContactList.module.css';
+
 
 export const ContactList = ({ contacts, onClick }) => {
   return (
-    <div>
+    <div className={clsx}>
       {contacts.map(contact => {
         return (
-          <div key={nanoid()}>
+          <div  key={nanoid()}>
             <p>
               {contact.name}: {contact.number}
             </p>
