@@ -1,11 +1,11 @@
-import React, {Component} from 'react'
-import { ContactForm } from './ContactForm/ContactForm'
-//import { ContactList } from './ContactList/ContactList'
-//import { Filter } from './Filter/Filter'
+import React, { Component } from 'react';
+import { nanoid } from 'nanoid';
+import { ContactForm } from './ContactForm/ContactForm';
+import { ContactList } from './ContactList/ContactList';
+import { Filter } from './Filter/Filter';
 
 
 export class App extends Component {
- 
   state = {
     contacts: [
       { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -16,18 +16,53 @@ export class App extends Component {
     filter: '',
   };
 
+  formSubmitHandler = ({ name, number }) => {
+    const { contacts } = this.state;
+    let newContact = {
+      id: nanoid(),
+      name,
+      number,
+    };
 
+    if (contacts.find(contact => contact.name === name)) {
+      return window.alert(`${name} is already in contacts.`);
+    }
+
+    this.setState(prevState => ({
+      contacts: [newContact, ...prevState.contacts],
+    }));
+  };
+
+  handleDeleteContact = id => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
+    }));
+  };
+
+  changeFilter = e => {
+    this.setState({ filter: e.currentTarget.value });
+  };
 
   render() {
-    
-    return (<div>
-                <h1>Phonebook</h1>
-                <ContactForm onSubmit={this.handleSubmit}/>
+    const { contacts, filter } = this.state;
 
-                <h2>Contacts</h2>
-                <Filter filter={filter} onChange={this.changeFilter} />
-            </div>
-    )
+    const normalizeFilter = filter.toLocaleLowerCase();
+
+    const filterContacts = contacts.filter(contact => {
+      return contact.name.toLocaleLowerCase().includes(normalizeFilter);
+    });
+
+    return (
+      <>
+        <h1>Phonebook</h1>
+        <ContactForm onSubmit={this.formSubmitHandler} />
+        <h2>Contacts</h2>
+        <Filter filter={filter} onChange={this.changeFilter} />
+        <ContactList
+          contacts={filterContacts}
+          onClick={this.handleDeleteContact}
+        />
+      </>
+    );
   }
-
-};
+}

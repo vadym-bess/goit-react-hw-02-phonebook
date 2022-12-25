@@ -1,3 +1,29 @@
 .submitButton{
     margin-top: 20px;
+    width: 100px;
+}
+
+.formWrapper{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #000;
+    border-radius: 5px;
+    width: 300px;
+    height: 100%;
+    padding: 20px;
+}
+
+.nameThumb{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 50%;
+}
+
+.numberThumb{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    width: 50%;
 }

@@ -1,19 +1,16 @@
 import PropTypes from 'prop-types';
-
-changeFilter = e => {
-    this.setState({ filter: e.currentTarget.value });
-};
+import React from 'react';
+import clsx from 'clsx'
   
 
 export const Filter = ({ filter, onChange }) => {
-    return (
-    <label>
-      Find contacts by name
+    return (<label>
+                  Find contacts by name
             <input
                 type="text"
                 value={filter}
                 onChange={onChange} />
-    </label>
+            </label>
   );
 };
 
