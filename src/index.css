@@ -19,3 +19,16 @@ input{
   border: 1px solid darkgray;
   border-radius: 2px;
 }
+
+.ContactListThumb {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.button {
+  height: 100%;
+  background-color: #fff;
+  border: 1px solid darkgray;
+  border-radius: 5px;
+}

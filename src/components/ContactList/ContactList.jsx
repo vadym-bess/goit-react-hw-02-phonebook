@@ -1,8 +1,7 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
-import clsx from 'clsx'
-import css from './ContactList.module.css';
+
 
 
 export const ContactList = ({ contacts, onClick }) => {
@@ -10,11 +9,11 @@ export const ContactList = ({ contacts, onClick }) => {
     <div >
       {contacts.map(contact => {
         return (
-          <div className={clsx(css.ContactListThumb)}  key={nanoid()}>
+            <div className = "ContactListThumb"  key={nanoid()}>
             <p>
               {contact.name}: {contact.number}
             </p>
-            <button className={clsx(css.button)}
+            <button className = "button"
               type="button"
               onClick={() => {
                 onClick(contact.id);
